@@ -3,6 +3,11 @@
 This is a collection of scripts to fetch and then graph monthly contributions to a GitHub repository.
 It consists of two scripts: get_monthly_contributions.py and graph_monthly_contributions.py
 
+## Prerequisites
+
+The scripts are all written in Python (>= 3.8).
+They also depend on the `requests` and `urllib3` module to fetch data, as well as `numpy` and `matplotlib` to graph the data.
+
 ## get_monthly_contributions.py
 
 This script takes in a list of repositories and/or organizations, and outputs a YAML database consisting of a GitHub login mapped to how many contributions they had each month since 2013.
