@@ -151,7 +151,6 @@ def main():
     # Plot the overall contribution trend
     df = pd.DataFrame({'Date': overall_contributions.keys(), 'Value': overall_contributions.values()})
     x_num = dates.datestr2num(df['Date'])
-    #trend = np.polyfit(x_num, df['Value'], 1)
     trend = np.polyfit(x_num, df['Value'], 2)
     fit = np.poly1d(trend)
     plt.plot(df['Date'], fit(x_num), 'r--')
