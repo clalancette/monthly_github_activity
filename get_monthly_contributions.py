@@ -458,32 +458,32 @@ def load_existing_data(filename: str, today: datetime.datetime) -> dict:
     with open(filename, 'r') as infp:
         data = json.load(infp)
 
-        output_data['last_updated'] = data['last_updated']
+    output_data['last_updated'] = data['last_updated']
 
-        output_data['repos_visited'] = set(data['repos_visited'])
+    output_data['repos_visited'] = set(data['repos_visited'])
 
-        for author, values in data['author_contrib'].items():
-            output_data['author_contrib'][author] = AuthorCounts(today)
+    for author, values in data['author_contrib'].items():
+        output_data['author_contrib'][author] = AuthorCounts(today)
 
-            for datestr, activity in data['author_contrib'][author]['prs_by_month'].items():
-                date = datetime.datetime.strptime(datestr, '%Y-%m').date()
-                output_data['author_contrib'][author].increment_prs(date, activity)
+        for datestr, activity in data['author_contrib'][author]['prs_by_month'].items():
+            date = datetime.datetime.strptime(datestr, '%Y-%m').date()
+            output_data['author_contrib'][author].increment_prs(date, activity)
 
-            for datestr, activity in data['author_contrib'][author]['reviews_by_month'].items():
-                date = datetime.datetime.strptime(datestr, '%Y-%m').date()
-                output_data['author_contrib'][author].increment_reviews(date, activity)
+        for datestr, activity in data['author_contrib'][author]['reviews_by_month'].items():
+            date = datetime.datetime.strptime(datestr, '%Y-%m').date()
+            output_data['author_contrib'][author].increment_reviews(date, activity)
 
-            for datestr, activity in data['author_contrib'][author]['pr_comments_by_month'].items():
-                date = datetime.datetime.strptime(datestr, '%Y-%m').date()
-                output_data['author_contrib'][author].increment_pr_comments(date, activity)
+        for datestr, activity in data['author_contrib'][author]['pr_comments_by_month'].items():
+            date = datetime.datetime.strptime(datestr, '%Y-%m').date()
+            output_data['author_contrib'][author].increment_pr_comments(date, activity)
 
-            for datestr, activity in data['author_contrib'][author]['issues_by_month'].items():
-                date = datetime.datetime.strptime(datestr, '%Y-%m').date()
-                output_data['author_contrib'][author].increment_issues(date, activity)
+        for datestr, activity in data['author_contrib'][author]['issues_by_month'].items():
+            date = datetime.datetime.strptime(datestr, '%Y-%m').date()
+            output_data['author_contrib'][author].increment_issues(date, activity)
 
-            for datestr, activity in data['author_contrib'][author]['issue_comments_by_month'].items():
-                date = datetime.datetime.strptime(datestr, '%Y-%m').date()
-                output_data['author_contrib'][author].increment_issue_comments(date, activity)
+        for datestr, activity in data['author_contrib'][author]['issue_comments_by_month'].items():
+            date = datetime.datetime.strptime(datestr, '%Y-%m').date()
+            output_data['author_contrib'][author].increment_issue_comments(date, activity)
 
     return output_data
 
