@@ -502,6 +502,10 @@ def write_out_data(filename, data):
 def main():
     options = parse_args()
 
+    if not options.repos and not options.orgs:
+        print('At least one repo or organization must be specified')
+        return 1
+
     today = datetime.date.today()
 
     # Load in the existing data, if it exists
